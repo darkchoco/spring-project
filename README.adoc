@@ -6,6 +6,8 @@ Ikhoon Chon <darkchoco@cloudscape.kr>
 ==== youtube-data-manager
 Getting the YouTube Playlist and more.
 
+* https://developers.google.com/youtube/v3/docs/playlists/list
+* https://developers.google.com/youtube/v3/docs/playlistItems/list
 * https://www.youtube.com/watch?v=73JCrReqv8Y&t=2s[Fetching YouTube data with SPRING BOOT 3 and OAUTH 2!]
 * Learning Spring Boot 3.0, 3rd Edition, Chapter 4
 

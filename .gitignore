@@ -32,3 +32,5 @@ target/
 tmp/
 README.template.adoc
 _src/
+_dat/
+node_modules/

@@ -1,24 +1,33 @@
 package darkchoco.ytdatamanager.web.controller;
 
 import darkchoco.ytdatamanager.YouTube;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import darkchoco.ytdatamanager.web.model.PlaylistItemsResponse;
+import darkchoco.ytdatamanager.web.model.PlaylistResponse;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping("/api")
 public class HomeController {
 
     private final YouTube youTube;
 
-    public HomeController(YouTube youTube) {
+    private final Environment env;
+
+    public HomeController(YouTube youTube, Environment env) {
         this.youTube = youTube;
+        this.env = env;
     }
 
-    @GetMapping("/")
-    String index(Model model) {
-        model.addAttribute("channelVideos", //
-                youTube.channelVideo("UCBVfhzdqhtJm8x_2Ed-HZXA", //
-                        10, YouTube.Sort.VIEW_COUNT));
-        return "index";
+    @GetMapping("/pl")
+    public PlaylistResponse allPlaylists() {
+        return youTube.allPlaylists(env.getProperty("youtube.channelid"), 20);
+    }
+
+    @GetMapping("/plitems")
+    public PlaylistItemsResponse allPlaylistItems() {
+        return youTube.allPlaylistItems(env.getProperty("youtube.playlistid"), 20);
     }
 }

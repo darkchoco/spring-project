@@ -11,7 +11,7 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 @Configuration
 public class YouTubeConfig {
 
-    static String YOUTUBE_V3_API = "https://www.googleapi.com/youtube/v3";
+    static String YOUTUBE_V3_API = "https://www.googleapis.com/youtube/v3";
 
     @Bean
     WebClient WebClient(OAuth2AuthorizedClientManager clientManager) {
@@ -26,14 +26,10 @@ public class YouTubeConfig {
     }
 
     @Bean
-    HttpServiceProxyFactory httpServiceProxyFactory(WebClient oauth2WebClient) {
-        return HttpServiceProxyFactory.builder()
-                .clientAdapter(WebClientAdapter.forClient(oauth2WebClient))
+    YouTube client(WebClient webClient) {
+        HttpServiceProxyFactory httpServiceProxyFactory = HttpServiceProxyFactory
+                .builder(WebClientAdapter.forClient(webClient))
                 .build();
-    }
-
-    @Bean
-    YouTube client(HttpServiceProxyFactory factory) {
-        return factory.createClient(YouTube.class);
+        return httpServiceProxyFactory.createClient(YouTube.class);
     }
 }
