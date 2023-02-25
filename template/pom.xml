@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <!-- 아래 5줄 수정 -->
-    <groupId>io.github.darkchoco.spring-project</groupId>
+    <groupId>io.github.darkchoco.spring</groupId>
     <artifactId>template</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>template</name>
@@ -31,6 +31,11 @@
             <artifactId>assertj-core</artifactId>
             <version>3.24.2</version>
             <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 
