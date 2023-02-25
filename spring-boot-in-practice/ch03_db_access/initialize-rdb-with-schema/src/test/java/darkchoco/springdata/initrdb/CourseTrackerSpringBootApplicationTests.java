@@ -30,11 +30,10 @@ class CourseTrackerSpringBootApplicationTests {
     @Test
     public void whenCountAllCoursesThenExpectFiveCourses() throws SQLException {
         int noOfCourses = 0;
-        try (PreparedStatement ps = dataSource.getConnection().prepareStatement("SELECT COUNT(1) FROM COURSES");
+        try (PreparedStatement ps = dataSource.getConnection().prepareStatement("SELECT COUNT(1) FROM courses");
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 noOfCourses = rs.getInt(1);
-
             }
             assertThat(noOfCourses).isEqualTo(5L);
         }

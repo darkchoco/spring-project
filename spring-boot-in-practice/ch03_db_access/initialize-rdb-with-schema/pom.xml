@@ -8,7 +8,7 @@
         <version>3.0.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>io.github.darkchoco.spring-data</groupId>
+    <groupId>io.github.darkchoco.spring-boot-in-practice</groupId>
     <artifactId>initialize-rdb-with-schema</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>initialize-rdb-with-schema</name>
