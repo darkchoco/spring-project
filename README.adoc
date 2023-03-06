@@ -3,6 +3,21 @@ Ikhoon Chon <darkchoco@cloudscape.kr>
 :toc:
 
 == Contents
+==== declarative-http-client
+Using WebClient with @HttpExchange.
+
+* https://howtodoinjava.com/spring-webflux/http-declarative-http-client-httpexchange/[Spring Declarative HTTP Client using @HttpExchange]
+
+==== reactor-test
+How to use reactor with various examples.
+
+* Spring in Action, 5th Edition, Chapter 10
+
+==== spring-boot-3-security-jwt
+An example of Spring Security based on Spring Boot 3.
+
+* https://www.youtube.com/watch?v=KxqlJblhzfI[Spring Boot 3 + Spring Security 6 - JWT Authentication and Authorisation]
+
 ==== youtube-data-manager
 Getting the YouTube Playlist and more.
 
@@ -10,16 +25,3 @@ Getting the YouTube Playlist and more.
 * https://developers.google.com/youtube/v3/docs/playlistItems/list
 * https://www.youtube.com/watch?v=73JCrReqv8Y&t=2s[Fetching YouTube data with SPRING BOOT 3 and OAUTH 2!]
 * Learning Spring Boot 3.0, 3rd Edition, Chapter 4
-
-==== reactor-test
-How to use reactor with various examples.
-
-* Spring in Action, 5th Edition, Chapter 10
-
-==== declarative-http-client
-Using WebClient with @HttpExchange.
-
-* https://howtodoinjava.com/spring-webflux/http-declarative-http-client-httpexchange/[Spring Declarative HTTP Client using @HttpExchange]
-
-== Reference Documentation
-
