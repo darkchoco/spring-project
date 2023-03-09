@@ -8,7 +8,7 @@
         <version>3.0.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>io.github.darkchoco.spring</groupId>
+    <groupId>io.github.darkchoco.spring-security</groupId>
     <artifactId>spring-boot-3-security-jwt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-3-security-jwt</name>
