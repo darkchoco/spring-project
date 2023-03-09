@@ -55,12 +55,12 @@ public class FullstackdevReactSpringApplication implements CommandLineRunner {
         siteUserRepository.save(SiteUser.builder()
                 .username("user")
                 .password("$2a$10$9ETIBYtMoyqBCtHssD58V.p.2P5xbzH0W7B842QLx/ksWNm12Smy2")
-                .role("USER")
+                .role(Role.USER)
                 .build());
         siteUserRepository.save(SiteUser.builder()
                 .username("admin")
                 .password("$2a$10$DRT/bwtDmziqcIYu/kR61.k9X988Rev7b.Fo5dHpV65hreTQDnYjG")
-                .role("ADMIN")
+                .role(Role.ADMIN)
                 .build());
     }
 }
