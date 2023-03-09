@@ -2,7 +2,19 @@
 Ikhoon Chon <darkchoco@cloudscape.kr>
 :toc:
 
+More informations are available in project WIKI.
+
+{sp} +
+
 == Contents
+=== fullstackdev-react-spring
+Codes are based on 'Full Stack Development with Spring Boot and React' and fully revised following Spring Boot 3.
+
+* Full Stack Development with Spring Boot and React
+
+{sp} +
+
+=== spring-reactive
 ==== declarative-http-client
 Using WebClient with @HttpExchange.
 
@@ -13,12 +25,17 @@ How to use reactor with various examples.
 
 * Spring in Action, 5th Edition, Chapter 10
 
+{sp} +
+
+=== spring-security
 ==== spring-boot-3-security-jwt
-An example of Spring Security based on Spring Boot 3.
+An example of Spring Security based on Spring Boot 3 and JWT.
 
 * https://www.youtube.com/watch?v=KxqlJblhzfI[Spring Boot 3 + Spring Security 6 - JWT Authentication and Authorisation]
 
-==== youtube-data-manager
+{sp} +
+
+=== youtube-data-manager
 Getting the YouTube Playlist and more.
 
 * https://developers.google.com/youtube/v3/docs/playlists/list
