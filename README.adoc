@@ -35,6 +35,14 @@ An example of Spring Security based on Spring Boot 3 and JWT.
 
 {sp} +
 
+=== spring-web
+==== logging-for-basic-crud-api
+Logging req/res of REST APIs in Spring Boot.
+
+* https://medium.com/@ankithahjpgowda/log-request-and-responses-of-rest-apis-in-springboot-c13f9bc7903f[Log request and responses of REST APIs in SpringBoot]
+
+{sp} +
+
 === youtube-data-manager
 Getting the YouTube Playlist and more.
 
