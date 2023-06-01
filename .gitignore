@@ -32,5 +32,6 @@ target/
 tmp/
 README.template.adoc
 _src/
+_on_the_shelf/
 _dat/
 node_modules/
