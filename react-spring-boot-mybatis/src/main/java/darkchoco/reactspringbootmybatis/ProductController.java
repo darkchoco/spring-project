@@ -31,6 +31,10 @@ public class ProductController {
                        @RequestParam("price") BigDecimal price,
                        @RequestParam(required = false) MultipartFile img,
                        HttpServletRequest req) {
+        return productMapper.insert(product_name, description, price, getFileNameFromReq(img, req));
+    }
+
+    private String getFileNameFromReq(MultipartFile img, HttpServletRequest req) {
         String filename = "-";
 
         if (img != null && !img.isEmpty()) {
@@ -45,8 +49,8 @@ public class ProductController {
                 e.printStackTrace();
             }
         }
-
-        return productMapper.insert(product_name, description, price, filename);
+        
+        return filename;
     }
 
     @GetMapping("/detail/{product_code}")
@@ -58,22 +62,7 @@ public class ProductController {
     public int update(@RequestPart("product") Product product,
                       @RequestPart(name = "img", required = false) MultipartFile img,
                       HttpServletRequest req) {
-        String filename = "-";
-
-        if (img != null && !img.isEmpty()) {
-            filename = img.getOriginalFilename();
-
-            try {
-                // application 객체 가져오기. 이 application은 웹서버의 정보를 조회할 수 있는 객체이다.
-                ServletContext application = req.getSession().getServletContext();
-                String path = application.getRealPath("/static/images/");
-                img.transferTo(new File(path + filename));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        product.setFilename(filename);
+        product.setFilename(getFileNameFromReq(img, req));
 
         return productMapper.update(product);
     }
