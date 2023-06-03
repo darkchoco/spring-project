@@ -20,4 +20,8 @@ public class ProductDAO {
 //    public void insert(Map<String, Object> map) {
 //        sqlSession.insert("product.insert", map);
 //    }
+
+    public String filename(int product_code) {
+        return sqlSession.selectOne("product.filename", product_code);
+    }
 }

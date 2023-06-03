@@ -2,8 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="product">
     <select id="list" resultType="java.util.Map" parameterType="String">
-        SELECT * FROM product
-                 WHERE product_name LIKE #{ product_name }
-                 ORDER BY product_name
+        SELECT *
+        FROM product
+        WHERE product_name LIKE #{ product_name }
+        ORDER BY product_name
+    </select>
+    <select id="filename" resultType="String">
+        SELECT filename
+        FROM product
+        WHERE product_code = #{ product_code }
     </select>
 </mapper>

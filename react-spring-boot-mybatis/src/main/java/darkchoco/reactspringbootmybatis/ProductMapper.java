@@ -22,4 +22,7 @@ public interface ProductMapper {
             "    filename = #{ filename }          " +
             "WHERE product_code = #{ product_code }")
     int update(Product product);
+
+    @Delete("DELETE FROM product WHERE product_code = #{ product_code }")
+    int delete(Integer product_code);
 }

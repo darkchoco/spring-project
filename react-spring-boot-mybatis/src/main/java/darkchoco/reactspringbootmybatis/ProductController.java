@@ -27,11 +27,45 @@ public class ProductController {
 
     @PostMapping("/insert")
     public int insert(@RequestParam("product_name") String product_name,
-                       @RequestParam("description") String description,
-                       @RequestParam("price") BigDecimal price,
-                       @RequestParam(required = false) MultipartFile img,
-                       HttpServletRequest req) {
+                      @RequestParam("description") String description,
+                      @RequestParam("price") BigDecimal price,
+                      @RequestParam(required = false) MultipartFile img,
+                      HttpServletRequest req) {
         return productMapper.insert(product_name, description, price, getFileNameFromReq(img, req));
+    }
+
+    @GetMapping("/detail/{product_code}")
+    public Product detail(@PathVariable Integer product_code) {
+        return productMapper.getByProductCode(product_code);
+    }
+
+    @PostMapping(value = "/update", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_OCTET_STREAM_VALUE})
+    public int update(@RequestPart("product") Product product,
+                      @RequestPart(name = "img", required = false) MultipartFile img,
+                      HttpServletRequest req) {
+        product.setFilename(getFileNameFromReq(img, req));
+
+        return productMapper.update(product);
+    }
+
+    @DeleteMapping("/delete")
+    public int delete(@RequestParam("product_code") Integer product_code,
+                      HttpServletRequest req) {
+        String filename = productDAO.filename(product_code);
+
+        if (filename != null && !filename.equals("-")) {
+            ServletContext application = req.getSession().getServletContext();
+            String path = application.getRealPath("/static/images/");
+            File file = new File(path + filename);
+            if (file.exists()) {
+                if (file.delete())
+                    System.out.println("File is deleted.");
+                else
+                    System.out.println("Sorry, unable to delete the file.");
+            }
+        }
+
+        return productMapper.delete(product_code);
     }
 
     private String getFileNameFromReq(MultipartFile img, HttpServletRequest req) {
@@ -49,21 +83,8 @@ public class ProductController {
                 e.printStackTrace();
             }
         }
-        
+
         return filename;
     }
 
-    @GetMapping("/detail/{product_code}")
-    public Product detail(@PathVariable Integer product_code) {
-        return productMapper.getByProductCode(product_code);
-    }
-
-    @PostMapping(value = "/update", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_OCTET_STREAM_VALUE})
-    public int update(@RequestPart("product") Product product,
-                      @RequestPart(name = "img", required = false) MultipartFile img,
-                      HttpServletRequest req) {
-        product.setFilename(getFileNameFromReq(img, req));
-
-        return productMapper.update(product);
-    }
 }
