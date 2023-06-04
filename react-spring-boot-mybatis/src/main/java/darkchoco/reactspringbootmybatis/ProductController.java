@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -19,6 +20,11 @@ public class ProductController {
     private final ProductDAO productDAO;
 
     private final ProductMapper productMapper;
+
+    @RequestMapping("/")
+    public ModelAndView home() {
+        return new ModelAndView("index", "", "");
+    }
 
     @RequestMapping("/list")
     public List<Map<String, Object>> list(@RequestParam(defaultValue = "") String product_name) {
