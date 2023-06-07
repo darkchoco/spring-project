@@ -3,10 +3,7 @@ package darkchoco.restdemo;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.repository.CrudRepository;
@@ -88,7 +85,7 @@ interface CoffeeRepository extends CrudRepository<Coffee, String> {}
 @Entity
 class Coffee {
 
-    @Id
+    @Id @Setter
     private String id;
     private String name;
 
