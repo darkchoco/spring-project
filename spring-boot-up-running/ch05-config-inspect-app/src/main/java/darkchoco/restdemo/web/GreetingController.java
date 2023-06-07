@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/greeting")
 public class GreetingController {
 
-    @Value("${greeting-name: Sangae}")
+    @Value("${greeting-name: 연정}")
     private String name;
 
     @Value("${greeting-coffee: ${greeting-name} is drinking Café Ganador}")
