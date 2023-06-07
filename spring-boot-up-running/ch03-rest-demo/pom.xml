@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.github.darkchoco.spring-boot-up-running</groupId>
-    <artifactId>ch02-rest-demo</artifactId>
+    <artifactId>ch03-rest-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
 	<properties>

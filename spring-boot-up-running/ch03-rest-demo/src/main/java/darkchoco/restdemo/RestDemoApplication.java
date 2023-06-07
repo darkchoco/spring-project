@@ -71,6 +71,8 @@ class RestApiDemoController {
 			}
 		}
 
+	    // PUT response에서는 상태코드가 필수. Coffee 객체만 반환하는 대신 해당 객체와 적절한 HTTP 상태코드가 포함된
+        // ResponseEntity를 반환한다.
 		return (coffeeIndex == -1) ?
 				new ResponseEntity<>(postCoffee(coffee), HttpStatus.CREATED) :
 				new ResponseEntity<>(coffee, HttpStatus.OK);
