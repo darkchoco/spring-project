@@ -6,10 +6,12 @@ import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@ConfigurationPropertiesScan
 @SpringBootApplication
 public class RestDemoApplication {
 
@@ -34,5 +36,3 @@ class DataLoader {
 		));
 	}
 }
-
-
