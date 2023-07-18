@@ -26,8 +26,8 @@ class PlaneFinderPoller {
 
         client.get()
                 .retrieve()
-                .bodyToFlux(Aircraft.class)
-                .filter(plane -> !plane.getReg().isEmpty())
+                .bodyToFlux(Aircraft.class)  // Flux로 변환
+                .filter(plane -> !plane.getReg().isEmpty())  // 등록번호 없는 Aircraft 제외
                 .toStream()
                 .forEach(ac -> redisOperations.opsForValue().set(ac.getReg(), ac));
 
