@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 public class TestController {
 
-    TestService testService;
+    private final TestService testService;
 
     @GetMapping("/test")
     public List<Member> getAllMembers() {

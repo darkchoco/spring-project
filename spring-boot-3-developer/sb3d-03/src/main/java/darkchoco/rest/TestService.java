@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class TestService {
 
-    MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     public List<Member> getAllMembers() {
         return memberRepository.findAll();

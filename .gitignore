@@ -35,3 +35,4 @@ _src/
 _on_the_shelf/
 _dat/
 node_modules/
+*.db
