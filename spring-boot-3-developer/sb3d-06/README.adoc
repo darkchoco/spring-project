@@ -1,0 +1,15 @@
+= Basic Blog App with REST APIs
+
+== Notes
+최근 Spring Boot 버젼부터는 초기 데이터 로드를 위해 `application.properties` 내 아래 라인이 반드시 필요하다.
+----
+spring.sql.init.mode=always
+spring.jpa.defer-datasource-initialization=true
+----
+
+https://stackoverflow.com/questions/45082574/spring-boot-doesnt-load-data-to-initialize-database-using-data-sql#comment119774687_49706932[Spring boot doesn't load data to initialize database using data.sql] 를 참조.
+
+''''
+
+`data.sql` 만으로는 데이터가 자동으로 로딩되지 않았다. +
+DDL을 정의한 `schema.sql` 도 필요한데, CREATE 하는 테이블의 경우 `@Entity` 내 정의된 내역과 같아야 한다.
