@@ -1,0 +1,7 @@
+= Spring Boot: Up & Running
+
+== ch06
+* `planefinder` 프로젝트를 먼저 준비한다. +
+  Build 후 실행하면 로컬 컴퓨터의 7634 포트에서 클라이언트 연결을 기다린다.
+* `ch06-sbur-redis` 에서 Template 기반 서비스를 구현한다. +
+  Build 후 실행하면 상기한 `pathfinder` 서버에 연결하여 데이터를 받은 후 Redis 서버에 저장한다.
