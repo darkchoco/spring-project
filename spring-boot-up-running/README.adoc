@@ -22,4 +22,5 @@ spring.data.redis.port=46379
 
 앞서 `ch06-sbur-redis`와 마찬가지로 `spring.data.redis.host`는 생략해도 된다. (localhost가 default)
 
-
+=== ch06-sbur-jpa-mysql
+애플리케이션의 repository를 사용해 데이터베이스를 채울 수도 있지만(P146), 그냥 데이터베이스 스크립트를 사용하는 것이 내게는 훨씬 편하다.
