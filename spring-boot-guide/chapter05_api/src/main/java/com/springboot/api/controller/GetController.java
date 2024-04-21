@@ -3,7 +3,9 @@ package com.springboot.api.controller;
 import com.springboot.api.dto.MemberDto;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,7 @@ public class GetController {
 
     // 예제 5.2
     // http://localhost:8080/api/v1/get-api/hello
+    // 아래 방식은 GetMapping으로 대체
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String getHello() {
         // 예제 5.27
@@ -50,6 +53,7 @@ public class GetController {
 
     // 예제 5.5
     // http://localhost:8080/api/v1/get-api/variable2/{String 값}
+    // 상기 예제와는 달리 지정한 변수명(var)과 메서드 매개변수 이름(variable)을 다르게 유지할 경우
     @GetMapping(value = "/variable2/{variable}")
     public String getVariable2(@PathVariable("variable") String var) {
         return var;
@@ -57,24 +61,24 @@ public class GetController {
 
     // 예제 5.6, 예제 5.23
     // http://localhost:8080/api/v1/get-api/request2?name=flature&email=thinkground.flature@gmail.com&organization=thinkground
+    // 상기 예제는 URL 경로에 값을 담아 보내는 경우고 이 경우는 쿼리 형식(?key=value&...)으로 값을 전달하는 경우
     @ApiOperation(value = "GET 메소드 예제", notes = "@RequestParam을 활용한 GET Method")
     @GetMapping(value = "/request1")
     public String getRequestParam1(
-        @ApiParam(value = "이름", required = true) @RequestParam String name,
-        @ApiParam(value = "이메일", required = true) @RequestParam String email,
-        @ApiParam(value = "회사", required = true) @RequestParam String organization) {
+            @ApiParam(value = "이름", required = true) @RequestParam String name,
+            @ApiParam(value = "이메일", required = true) @RequestParam String email,
+            @ApiParam(value = "회사", required = true) @RequestParam String organization) {
         return name + " " + email + " " + organization;
     }
 
     // 예제 5.7
     // http://localhost:8080/api/v1/get-api/request2?key1=value1&key2=value2
+    // 클라이언트 쪽에서 값을 받을 때 필수항목 아닌 선택항목들이 있을 경우 뭐가 올 지 모르므로 Map 객체로 받는다.
     @GetMapping(value = "/request2")
     public String getRequestParam2(@RequestParam Map<String, String> param) {
         StringBuilder sb = new StringBuilder();
 
-        param.entrySet().forEach(map -> {
-            sb.append(map.getKey() + " : " + map.getValue() + "\n");
-        });
+        param.forEach((key, value) -> sb.append(key).append(" : ").append(value).append("\n"));
 
         return sb.toString();
     }
