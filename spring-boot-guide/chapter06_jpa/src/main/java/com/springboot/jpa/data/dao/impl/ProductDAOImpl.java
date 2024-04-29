@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductDAOImpl implements ProductDAO {
 
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     @Autowired
     public ProductDAOImpl(ProductRepository productRepository) {
@@ -23,17 +23,13 @@ public class ProductDAOImpl implements ProductDAO {
     // 예제 6.11
     @Override
     public Product insertProduct(Product product) {
-        Product savedProduct = productRepository.save(product);
-
-        return savedProduct;
+        return productRepository.save(product);
     }
 
     // 예제 6.12
     @Override
     public Product selectProduct(Long number) {
-        Product selectedProduct = productRepository.getById(number);
-
-        return selectedProduct;
+        return productRepository.getReferenceById(number);
     }
 
     // 예제 6.15

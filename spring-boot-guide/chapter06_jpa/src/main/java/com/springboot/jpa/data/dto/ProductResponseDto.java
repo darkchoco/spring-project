@@ -19,5 +19,4 @@ public class ProductResponseDto {
     private int price;
 
     private int stock;
-
 }
