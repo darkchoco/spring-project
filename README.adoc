@@ -4,7 +4,7 @@ Ikhoon Chon <darkchoco@cloudscape.kr>
 
 == Basic info
 
-More information on each project's wiki.  +
+More information on each project's README.  +
 Here only covers basic information about each project.
 
 {sp} +
@@ -13,6 +13,15 @@ Here only covers basic information about each project.
 === java-web-dev
 From Servlet to Spring Boot.
 
+==== Config
+* MySQL8 on XAMPP
+
+==== Reference
+먼저 local repo의 `_src` 에 있는 pptx 파일을 우선적으로 참고하도록.
+
+* https://cafe.naver.com/gugucoding
+* https://github.com/ckck24
+
 {sp} +
 
-== Reference
+
