@@ -1,0 +1,209 @@
+= Web Service using Spring Boot and AWS
+:toc:
+
+{sp}+
+
+* 학습시 의문점은 https://github.com/jojoldu/freelec-springboot2-webservice 에서 검색하거나 질문을 올릴 수 있다.
+* 5, 8, 9장의 갈무리는 ``./img/ch05,08,09`` 폴더를 참조.
+
+{sp}+
+
+== Chap 02. 테스트 코드 작성
+* 컨트롤러와 관련된 클래스는 모두 ``web`` package에 추가한다.
+* 모든 응답 DTO는 ``web\dto`` package에 추가한다.
+
+NOTE: Data Transfer Object의 약자로, 계층간 데이터 교환을 위한 자바빈즈를 뜻한다. +
+또한 DTO는 VO(Value Object)와 용어를 혼용해서 많이 사용하는데, VO는 읽기만 가능한 read only 속성을 가져 DTO와의 차이점이 존재한다. +
+일반적으로 DTO는 로직을 가지고 있지 않은 순수한 데이터의 객체이며 객체의 속성과 그 속성의 접근을 위한 getter 및 setter 메소드만을 가지고 있다.
+
+{sp}+
+
+== Chap 03. JPA 사용하기
+* JPA는 인터페이스로서 자바 표준명세서. 아래와 같은 관계를 숙지하자.
+====
+JPA ← Hibernate ← Spring Data JPA
+====
+
+* Hibernate를 쓰는 것과 Spring Data JPA를 쓰는 것 사이에는 차이가 없다. 즉 한 단계 더 감싸놓은 것. +
+나중에 Hibernate 외에 다른 구현체로 쉽게 교체하기 위해서이다. (관계형 데이터베이스를 MongoDB로 바꾸는 식의 변경도 손쉽게 된다)
+
+'''
+
+* 도메인을 담을 package로 ``domain`` 추가. +
+여기서 도메인이란 게시글, 댓글, 회원, 정산, 결제 등 소프트웨어에 대한 요구사항 또는 문제영역이라고 생각하면 된다.
+** 기존에 MyBatis 같은 쿼리 매퍼를 사용했다면 dao package를 떠올리겠지만 조금 다르다. 즉 그간 xml에 쿼리를 담고, 클래스는 오로지 쿼리 결과만 담던 일들이 모두 도메인 클래스라 불리는 곳에서 해결된다.
+
+* Entity의 PK 관련하여 -
+
+image::./img/3-01.jpg[]
+
+* Repository는 MyBatis 등에서 DAO라고 불리는 DB Layer 접근자
+
+image::./img/3-02.jpg[]
+
+'''
+
+* API를 만들기 위해 총 3개의 클래스가 필요하다.
+** Request 데이터를 받을 DTO
+** API 요청을 받을 Controller
+** 트랜잭션, 도메인 기능 간의 순서를 보장하는 Service
+
+* https://www.petrikainulainen.net/software-development/design/understanding-spring-web-application-architecture-the-classic-way/[Understanding Spring Web Application Architecture: The Classic Way] 참조. 아래 화면 캡처에 그 일부 내용이 있다.
+
+image::./img/3-03.jpg[]
+
+image::./img/3-04.jpg[]
+
+* H2 Database 접속 URL은 http://localhost:8080/h2-console
+
+image::./img/3-05.jpg[]
+
+image::./img/3-06.jpg[]
+
+image::./img/3-07.jpg[]
+
+{sp}+
+
+== Chap 04. Mustache로 화면 구성하기
+Bootstrap 최신버젼인 v4.6.0 기준으로 Bootstrap 웹사이트 문서에 따라 ``header.mustache``, ``footer.mustache``를 작성시 오류 발생.
+
+확인 결과 ``footer.mustache``에 삽입한 jQuery가 제대로 동작하지 않은 것이 원인이었다. +
+즉 'slim' 버젼이 아니라 'full' 버젼을 사용해야하고 ``integrity`` 속성도 빼야 했다.
+
+'''
+
+https://stackoverflow.com/questions/32087469/the-attribute-readonly-is-undefined-for-the-annotation-type-transactional[The attribute readOnly is undefined for the annotation type Transactional]
+
+* ``org.springframework.transaction.annotation.Transactional``을 지정해야한다.
+
+'''
+
+image::./img/4-01.jpg[]
+
+image::./img/4-02.jpg[]
+
+image::./img/4-03.jpg[]
+
+image::./img/4-04.jpg[]
+
+image::./img/4-05.jpg[]
+
+{sp}+
+
+== Chap 05. Spring Security와 OAuth 2.0으로 로그인 기능 구현
+구글 서비스 사용은 정말 안습이다. +
+일단 수행한 작업은 아래와 같다.
+
+. 프로젝트 생성
+. OAuth 동의 화면(OAuth consent screen) 만들기
+ .. 4단계 화면으로 되어 있다. (왜 이렇게 만들었을까 -_-a) +
+'Scope' 선택은 2번째 단계에 있다.
+ .. 작업 후 'Publishing' 해야 애플리케이션이 제대로 동작한다.
+. OAuth client ID 만들기
+ - Credentials > Create Credentials 에서 'OAuth client ID' 선택
+
+'''
+
+* ``config.auth`` 패키지를 생성하고 Security 관련 클래스는 모두 여기에 담는다.
+
+* Service에게 명령을 내리는 주체가 Controller가 아닌 Security가 되게 되는데, Security 역시 Controller와 같은 Web 계층이라서 문제가 되지 않는다. +
+세부적인 내용은 https://github.com/jojoldu/freelec-springboot2-webservice/issues/32[여기]를 참조하자.
+
+'''
+image::./img/5-00-1.jpg[]
+image::./img/5-00-2.jpg[]
+image::./img/5-00-3.jpg[]
+image::./img/5-01.jpg[SecurityConfig.java]
+image::./img/5-02.jpg[CustomOAuth2UserService.java]
+image::./img/5-03.jpg[OAuthAttributes.java]
+image::./img/5-04.jpg[SessionUser.java]
+image::./img/5-05.jpg[index.mustache 외]
+image::./img/5-06.jpg[Annotation 적용 #1]
+image::./img/5-07.jpg[Annotation 적용 #2]
+image::./img/5-08.jpg[세션 저장소로 데이터베이스 사용하기]
+image::./img/5-09.jpg[기존 테스트에 시큐리티 적용]
+image::./img/5-10.jpg[]
+image::./img/5-11.jpg[]
+image::./img/5-12.jpg[]
+image::./img/5-13.jpg[]
+image::./img/5-14.jpg[]
+
+{sp}+
+
+== Chap 08. EC2에 배포하기
+``springboot2-aws.sh`` 참조. +
+사용중인 ``Dev`` 서버의 디폴트 JDK가 1.8 이라서 아래 내역의 추가가 필요했다.
+
+[source, bash]
+----
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+export PATH=/usr/lib/jvm/java-11-openjdk/bin:$PATH
+----
+
+== Chap 09. 배포 자동화
+순서는 다음과 같다.
+
+* Jenkins 프로젝트 구성 (GitHub 연동)
+* AWS > IAM > ``jenkins-deploy`` 사용자 추가
+1. Permission: AmazonS3FullAccess, AWSCodeDeployFullAccess
+1. Access Key ID, Secret Access Key 생성
+1. ``Dev`` 내 ``jenkins``로 로그인하여 생성한 Access Key, Secret Access Key 등록 (``jenkis`` 사용자로 ``aws cli``를 사용할 수 있도록)
+1. Jenkins Credentials에 상기 키 값들 등록
+* S3 bucket 생성
+* Jenkins Job 내 Build 설정 수정하여 artifact, ``appspec.yml`` 및 필요한 파일을 zip 파일로 묶어서 S3 bucket으로 올릴 수 있도록 한다.
+
+CAUTION: zip 파일 내 계층이 없어야 한다. 즉 ``appspec.yml`` 파일 등이 zip 파일 내 서브디렉토리에 위치하면 안된다.
+
+* IAM Role (AmazonEC2RoleforAWSCodeDeploy policy가 추가된) 생성하여 ``Prd``에 assign 한다. 그다음 ``Prd`` reboot.
+* ``Prd``에 https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install-linux.html[CodeDeploy agent 설치].
+[source, bash]
+----
+centos@prd ~ $ sudo yum update
+centos@prd ~ $ sudo yum install ruby
+centos@prd ~ $ sudo yum install wget
+centos@prd ~ $ wget https://aws-codedeploy-eu-west-1.s3.eu-west-1.amazonaws.com/latest/install
+centos@prd ~ $ chmod +x ./install
+centos@prd ~ $ sudo ./install auto
+
+centos@prd ~ $ sudo service codedeploy-agent status
+The AWS CodeDeploy agent is running as PID 8182
+
+centos@prd ~ $ rm -f install
+----
+* IAM Role (AWSCodeDeployRole policy가 추가된) 생성.
+* CodeDeploy로 가서 Application 만들고 'Deployment Group'을 생성한다. +
+이때 앞서 만든 IAM Role을 지정한다. (https://lemontia.tistory.com/945[[aws\] Jenkins + S3 + CodeDeploy 를 이용해 배포하기(수동배포)] 참조)
+
+* https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-simple-s3.html[Tutorial: Create a simple pipeline (S3 bucket)] 을 참조하여 CodePipeline을 만든다. +
+이를 통해, S3 내 저장된 artifact가 build 프로세스를 통해 변경되면 자동으로 PRD에 deploy 된다.
+
+image::./img/9-01.jpg[]
+
+== Chap 10. 24시간 365일 중단 없는 서비스
+Docker로 Nginx 구성시 아래 항목들을 주의한다.
+
+* ``/etc/nginx/nginx.conf``가 ``/etc/nginx/conf.d/default.conf``를 include 하고 있다. +
+즉 ``/etc/nginx/conf.d/default.conf``에서 아래 내역을 수정해야 한다.
+
+[source, bash]
+----
+...
+location / {
+#    root   /usr/share/nginx/html;
+#    index  index.html index.htm;
+    proxy_pass http://172.17.0.1:8080;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+}
+...
+----
+
+* http://localhost:8080 로 ``proxy_pass``를 설정하면 안된다. +
+Host의 ``localhost:8080``에서 동작 중인 Spring Boot app은 컨테이너 쪽에서 봤을 때는 localhost에서 동작하는 것이 아니기 때문이다.
+
+* http://ec2-XXX-80-XXX-XXX.eu-west-1.compute.amazonaws.com/ 로 Google Cloud에 등록했기 때문에 이 도메인 명으로 접근해야 한다. (http://XXX.80.XXX.XXX 으로는 사용자 인증 불가능)
+
+---
+
+* 생성되는 artifact 이름을 버젼을 포함해서 자동으로 변경되게 하기 위하여 ``pom.xml`` 일부를 수정했다. https://stackoverflow.com/questions/18100389/maven-override-project-version-from-command-line[maven override project.version from command line] 를 참조한다.
