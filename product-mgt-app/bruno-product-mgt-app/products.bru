@@ -6,6 +6,14 @@ meta {
 
 post {
   url: http://localhost:8080/products
-  body: none
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "name": "Bioshork",
+    "price": 10,
+    "amount": 2
+  }
 }

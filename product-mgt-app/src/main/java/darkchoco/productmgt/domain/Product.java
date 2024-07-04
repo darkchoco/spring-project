@@ -1,9 +1,7 @@
 package darkchoco.productmgt.domain;
 
-import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 public class Product {
 
     // 도메인 객체에 대해서 setter를 쓰는 것은 피해야 하지만 id의 관리 책임을
