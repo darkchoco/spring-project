@@ -16,7 +16,7 @@ public class CountryDTO {
     private final List<String> capital;
     private final String region;
     private final int population;
-    private final String googleMapUrl;
+//    private final String googleMapUrl;
 
     public CountryDTO(Country country) {
         this.code = country.getCode();
@@ -27,6 +27,6 @@ public class CountryDTO {
         this.capital = country.getCapital();
         this.region = country.getRegion();
         this.population = country.getPopulation();
-        this.googleMapUrl = country.getGoogleMapUrl();
+//        this.googleMapUrl = country.getGoogleMapUrl();
     }
 }
