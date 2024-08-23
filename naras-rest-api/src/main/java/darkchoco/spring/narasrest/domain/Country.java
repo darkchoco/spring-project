@@ -1,10 +1,7 @@
 package darkchoco.spring.narasrest.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -24,8 +21,9 @@ public class Country {
     private String officialName;
     private String flagEmoji;
     private String flagImg;
-    @ElementCollection
-    private List<String> capital;
+    @ToString.Exclude
+    @OneToMany(mappedBy = "code")
+    private List<CountryCapital> capital;
     private String region;
     private int population;
     @JsonProperty("googleMapURL")

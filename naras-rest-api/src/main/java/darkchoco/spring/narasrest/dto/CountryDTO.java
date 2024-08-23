@@ -1,6 +1,7 @@
 package darkchoco.spring.narasrest.dto;
 
 import darkchoco.spring.narasrest.domain.Country;
+import darkchoco.spring.narasrest.domain.CountryCapital;
 import lombok.Getter;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class CountryDTO {
     private final List<String> capital;
     private final String region;
     private final int population;
-//    private final String googleMapUrl;
+    private final String googleMapUrl;
 
     public CountryDTO(Country country) {
         this.code = country.getCode();
@@ -24,9 +25,12 @@ public class CountryDTO {
         this.officialName = country.getOfficialName();
         this.flagEmoji = country.getFlagEmoji();
         this.flagImg = country.getFlagImg();
-        this.capital = country.getCapital();
+        this.capital = country.getCapital()
+                .stream()
+                .map(CountryCapital::getCapital)
+                .toList();
         this.region = country.getRegion();
         this.population = country.getPopulation();
-//        this.googleMapUrl = country.getGoogleMapUrl();
+        this.googleMapUrl = country.getGoogleMapUrl();
     }
 }
