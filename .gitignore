@@ -48,6 +48,7 @@ target/
 *.rar
 
 # etc.
+*.bak
+_src/
 tmp/
 node_modules/
-_src/
