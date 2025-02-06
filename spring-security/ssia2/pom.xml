@@ -8,6 +8,7 @@
     <name>ssia2</name>
     <modules>
         <module>ssia-ch2-ex2</module>
+        <module>ssia-ch2-ex3</module>
     </modules>
 
     <properties>
