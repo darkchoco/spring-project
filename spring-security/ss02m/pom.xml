@@ -8,6 +8,7 @@
     <name>ss02m</name>
     <modules>
         <module>ss02m-02</module>
+        <module>ss02m-03</module>
     </modules>
 
     <properties>
