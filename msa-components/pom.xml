@@ -17,6 +17,7 @@
 
     <modules>
         <module>ch05</module>
+        <module>ch06</module>
     </modules>
 
     <properties>
