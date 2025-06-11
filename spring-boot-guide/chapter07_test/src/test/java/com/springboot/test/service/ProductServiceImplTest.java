@@ -1,6 +1,7 @@
 package com.springboot.test.service;
 
 import com.springboot.test.domain.Product;
+import com.springboot.test.dto.ProductDto;
 import com.springboot.test.dto.ProductResponseDto;
 import com.springboot.test.repository.ProductRepository;
 import org.junit.jupiter.api.Assertions;
@@ -10,9 +11,11 @@ import org.mockito.Mockito;
 
 import java.util.Optional;
 
+import static org.mockito.AdditionalAnswers.returnsFirstArg;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
-class ProductServiceImplTest {
+class ProductServiceTest {
 
     private final ProductRepository productRepository = Mockito.mock(ProductRepository.class);
     private ProductServiceImpl productService;
@@ -41,5 +44,24 @@ class ProductServiceImplTest {
         Assertions.assertEquals(productResponseDto.getStock(), givenProduct.getStock());
 
         verify(productRepository).findById(123L);
+    }
+
+    /**
+     * any() : ArgumentMatchers.any() 에 주목하기. Mock 객체인 ProductRepository의 동작 정의시 특정 매개변수의 전달을
+     * 설정하지 않고 메서드 실행만 확인하거나 좀 더 큰 범위의 클래스 객체를 매개변수로 전달받는 등의 상황에 사용한다.
+     */
+    @Test
+    void saveProduct() {
+        Mockito.when(productRepository.save(any(Product.class)))
+                .then(returnsFirstArg());
+
+        ProductResponseDto productResponseDto =
+                productService.saveProduct(new ProductDto("Goldberg Variations", 12, 1000));
+
+        Assertions.assertEquals("Goldberg Variations", productResponseDto.getName());
+        Assertions.assertEquals(12, productResponseDto.getPrice());
+        Assertions.assertEquals(1000, productResponseDto.getStock());
+
+        verify(productRepository).save(any());
     }
 }
