@@ -5,15 +5,15 @@ import com.springboot.test.dto.ProductResponseDto;
 import com.springboot.test.domain.Product;
 import com.springboot.test.repository.ProductRepository;
 import java.time.LocalDateTime;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    private final Logger log = LoggerFactory.getLogger(ProductServiceImpl.class);
     private final ProductRepository productRepository;
 
     @Autowired

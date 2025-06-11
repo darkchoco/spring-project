@@ -4,12 +4,16 @@ import com.google.gson.Gson;
 import com.springboot.test.dto.ProductDto;
 import com.springboot.test.dto.ProductResponseDto;
 import com.springboot.test.service.ProductServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -19,14 +23,22 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = ProductController.class)
+@ExtendWith(MockitoExtension.class)  // Mockito 확장 기능 활성화
 public class ProductControllerTest {
 
-    @Autowired
+    @Mock
+    private ProductServiceImpl productService;
+
+    @InjectMocks  // @Mock으로 생성된 목 객체를 주입받을 필드
+    private ProductController productController;
+
     private MockMvc mockMvc;
 
-    @MockBean
-    ProductServiceImpl productService;
+    @BeforeEach
+    void setUp() {
+        // MockMvc를 수동으로 설정
+        mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
+    }
 
     @Test
     void getProduct() throws Exception {
@@ -46,6 +58,7 @@ public class ProductControllerTest {
     }
 
     @Test
+    @DisplayName("Product 데이터 생성 테스트")
     void createProduct() throws Exception {
         given(productService.saveProduct(new ProductDto("김광석", 14, 500)))
                 .willReturn(new ProductResponseDto(12345L, "김광석", 14, 500));
@@ -56,7 +69,7 @@ public class ProductControllerTest {
                 .stock(500)
                 .build();
 
-        Gson gson = new Gson();
+        Gson gson = new Gson();  // ObjectMapper를 사용해도 되지만 현업에서 많이 사용되는 Gson을 활용한다
         String content = gson.toJson(productDto);
 
         mockMvc.perform(post("/product").content(content).contentType(MediaType.APPLICATION_JSON))

@@ -45,7 +45,7 @@ public class ProductController {
     }
 
     @DeleteMapping()
-    public ResponseEntity<String> deleteProduct(Long number) throws Exception {
+    public ResponseEntity<String> deleteProduct(Long number) {
         productService.deleteProduct(number);
 
         return ResponseEntity.status(HttpStatus.OK).body("정상적으로 삭제되었습니다.");
