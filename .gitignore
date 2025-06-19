@@ -49,6 +49,7 @@ target/
 
 # etc.
 *.bak
+temp/
 _src/
 tmp/
 node_modules/
