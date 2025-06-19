@@ -1,5 +1,6 @@
 package darkchoco.contentservice.config;
 
+import darkchoco.contentservice.service.AladinClient;
 import darkchoco.contentservice.service.ArticleClient;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
@@ -7,6 +8,8 @@ import io.netty.handler.timeout.WriteTimeoutHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
+import org.springframework.web.client.RestClient;
+import org.springframework.web.client.support.RestClientAdapter;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.support.WebClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
@@ -45,5 +48,16 @@ public class ClientConfig {
 //                .blockTimeout(Duration.ofSeconds(7))
                 .build();
         return factory.createClient(ArticleClient.class);
+    }
+
+    @Bean
+    AladinClient aladinClient() {
+        RestClient restClient = RestClient.builder()
+                .baseUrl("http://www.aladin.co.kr/ttb/api/")
+                .build();
+        HttpServiceProxyFactory factory = HttpServiceProxyFactory
+                .builderFor(RestClientAdapter.create(restClient))
+                .build();
+        return factory.createClient(AladinClient.class);
     }
 }
