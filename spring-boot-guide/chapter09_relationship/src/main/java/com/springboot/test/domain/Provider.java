@@ -7,6 +7,8 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Setter
@@ -22,6 +24,10 @@ public class Provider extends BaseEntity {
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "provider", fetch = FetchType.EAGER)  // OneToMany의 기본 fetch 전략이 Lazy라서 즉시 로딩으로 조정.
+    @ToString.Exclude  // Lombok의 ToString에 의해 순환참조가 발생할 수 있어 제외 처리
+    private List<Product> productList = new ArrayList<>();
 
     @Override
     public final boolean equals(Object o) {
