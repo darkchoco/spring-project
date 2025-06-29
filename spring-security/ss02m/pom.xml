@@ -9,6 +9,8 @@
     <modules>
         <module>ss02m-02</module>
         <module>ss02m-03</module>
+        <module>ss02m-06</module>
+        <module>ss02m-11/bank-app-backend</module>
     </modules>
 
     <properties>
