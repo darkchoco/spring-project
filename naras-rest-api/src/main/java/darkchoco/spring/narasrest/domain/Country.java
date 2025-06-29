@@ -21,11 +21,13 @@ public class Country {
     private String officialName;
     private String flagEmoji;
     private String flagImg;
-    @ToString.Exclude
-    @OneToMany(mappedBy = "code")
-    private List<CountryCapital> capital;
     private String region;
     private int population;
+
     @JsonProperty("googleMapURL")
     private String googleMapUrl;
+
+    @OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
+    @ToString.Exclude
+    private List<CountryCapital> capitals;
 }

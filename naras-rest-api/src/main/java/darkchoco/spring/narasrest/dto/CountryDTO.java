@@ -25,7 +25,7 @@ public class CountryDTO {
         this.officialName = country.getOfficialName();
         this.flagEmoji = country.getFlagEmoji();
         this.flagImg = country.getFlagImg();
-        this.capital = country.getCapital()
+        this.capital = country.getCapitals()
                 .stream()
                 .map(CountryCapital::getCapital)
                 .toList();

@@ -9,5 +9,4 @@ public class NarasRestApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(NarasRestApiApplication.class, args);
     }
-
 }

@@ -14,6 +14,10 @@ public class CountryCapital {
 
     @Id
     private String id;
-    private String code;
     private String capital;
+
+    @ManyToOne
+    @JoinColumn(name = "country_code", referencedColumnName = "code")
+    @ToString.Exclude
+    private Country country;
 }

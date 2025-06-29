@@ -15,8 +15,7 @@ public interface CountryRepository extends JpaRepository<Country, String> {
 //            FROM country co
 //            INNER JOIN country_capital cc ON co.code = cc.code""", nativeQuery = true)
 //    List<Country> findAllWithJoin();
-
     @SuppressWarnings("NullableProblems")
-    @EntityGraph(attributePaths = {"capital"})
+    @EntityGraph(attributePaths = {"capitals"})
     List<Country> findAll();
 }
