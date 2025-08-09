@@ -1,7 +1,7 @@
-package com.springboot.test.service;
+package com.springboot.advancedjpa.service;
 
-import com.springboot.test.dto.ProductDto;
-import com.springboot.test.dto.ProductResponseDto;
+import com.springboot.advancedjpa.dto.ProductDto;
+import com.springboot.advancedjpa.dto.ProductResponseDto;
 
 public interface ProductService {
 

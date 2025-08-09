@@ -1,4 +1,4 @@
-package com.springboot.test.dto;
+package com.springboot.advancedjpa.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

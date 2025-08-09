@@ -1,4 +1,4 @@
-package com.springboot.test.config;
+package com.springboot.advancedjpa.config;
 
 import org.springframework.context.annotation.Bean;
 import springfox.documentation.builders.ApiInfoBuilder;

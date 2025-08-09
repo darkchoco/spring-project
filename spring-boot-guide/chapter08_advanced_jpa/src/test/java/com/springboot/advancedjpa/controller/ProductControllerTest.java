@@ -1,9 +1,10 @@
-package com.springboot.test.controller;
+package com.springboot.advancedjpa.controller;
 
 import com.google.gson.Gson;
-import com.springboot.test.dto.ProductDto;
-import com.springboot.test.dto.ProductResponseDto;
-import com.springboot.test.service.ProductServiceImpl;
+import com.springboot.advancedjpa.controller.ProductController;
+import com.springboot.advancedjpa.dto.ProductDto;
+import com.springboot.advancedjpa.dto.ProductResponseDto;
+import com.springboot.advancedjpa.service.ProductServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

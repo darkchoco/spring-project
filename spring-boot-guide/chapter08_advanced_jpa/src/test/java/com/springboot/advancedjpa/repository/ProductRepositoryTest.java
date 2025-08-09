@@ -1,7 +1,8 @@
-package com.springboot.test.repository;
+package com.springboot.advancedjpa.repository;
 
-import com.springboot.test.config.JpaAuditingConfiguration;
-import com.springboot.test.domain.Product;
+import com.springboot.advancedjpa.config.JpaAuditingConfiguration;
+import com.springboot.advancedjpa.domain.Product;
+import com.springboot.advancedjpa.repository.ProductRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

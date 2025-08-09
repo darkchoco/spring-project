@@ -1,4 +1,4 @@
-package com.springboot.test.domain;
+package com.springboot.advancedjpa.domain;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,6 +1,6 @@
-package com.springboot.test.repository;
+package com.springboot.advancedjpa.repository;
 
-import com.springboot.test.domain.Product;
+import com.springboot.advancedjpa.domain.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

@@ -1,9 +1,9 @@
-package com.springboot.test.controller;
+package com.springboot.advancedjpa.controller;
 
-import com.springboot.test.dto.ChangeProductNameDto;
-import com.springboot.test.dto.ProductDto;
-import com.springboot.test.dto.ProductResponseDto;
-import com.springboot.test.service.ProductService;
+import com.springboot.advancedjpa.dto.ChangeProductNameDto;
+import com.springboot.advancedjpa.dto.ProductDto;
+import com.springboot.advancedjpa.dto.ProductResponseDto;
+import com.springboot.advancedjpa.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

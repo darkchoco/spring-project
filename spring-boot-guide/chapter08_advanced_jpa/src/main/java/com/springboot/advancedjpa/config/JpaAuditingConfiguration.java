@@ -1,4 +1,4 @@
-package com.springboot.test.config;
+package com.springboot.advancedjpa.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

@@ -1,9 +1,10 @@
-package com.springboot.test.service;
+package com.springboot.advancedjpa.service;
 
-import com.springboot.test.domain.Product;
-import com.springboot.test.dto.ProductDto;
-import com.springboot.test.dto.ProductResponseDto;
-import com.springboot.test.repository.ProductRepository;
+import com.springboot.advancedjpa.domain.Product;
+import com.springboot.advancedjpa.dto.ProductDto;
+import com.springboot.advancedjpa.dto.ProductResponseDto;
+import com.springboot.advancedjpa.repository.ProductRepository;
+import com.springboot.advancedjpa.service.ProductServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
