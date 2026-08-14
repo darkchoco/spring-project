@@ -36,7 +36,7 @@ target/
 *.log
 
 # Maven, Gradle
-*.mvn/
+.mvn/wrapper/maven-wrapper.jar
 *.gradle/
 
 # Package Files
