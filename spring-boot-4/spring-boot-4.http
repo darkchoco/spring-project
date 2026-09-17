@@ -4,4 +4,15 @@
 GET http://localhost:8080/api/companies
 Accept: application/vnd.darkchoco+json;v=1.0
 
-###
+### Send Contact Message
+POST http://localhost:8080/api/contacts
+Accept: application/vnd.darkchoco+json;v=1.0
+Content-Type: application/json
+
+{
+  "name": "김수정",
+  "email": "crystal@cloudscape.kr",
+  "userType": "Job Seeker",
+  "subject": "Facing technical problem",
+  "message": "Facing technical problem while uploading Resume"
+}

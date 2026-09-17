@@ -1,0 +1,706 @@
+# Spring
+
+###
+# group: Dummy
+# @name PathVariable
+GET /api/dummy/users/123/posts/456
+#X-API-VERSION: 3.0
+Accept: application/json;v=3.0
+
+###
+# group: Dummy
+# @name HomeRequest
+GET /home
+
+###
+# group: Dummy
+# @name QueryParams
+GET /api/dummy/users/search?
+    name=John&
+    gender=Male
+
+###
+# group: Dummy
+# @name QueryParamsWithMap
+GET /api/dummy/users/search?
+    name=John&
+    gender=Male
+
+###
+# group: Dummy
+# @name ReqHeaders
+GET /api/dummy/users/headers
+User-Location: Delhi
+
+###
+# group: Dummy
+# @name RequestBody
+POST /api/dummy/users
+User-Location: Delhi
+Content-Type: application/json
+
+{
+  "name": "Madan Reddy",
+  "email": "tutor@eazybytes.com",
+  "gender": "Male"
+}
+
+###
+# group: Dummy
+# @name RequestEntity
+POST /api/dummy/users/request-entity
+User-Location: Delhi
+Content-Type: application/json
+
+{
+  "name": "Madan Reddy",
+  "email": "tutor@eazybytes.com",
+  "gender": "Male"
+}
+
+###
+# group: Versioning / Legacy
+# @name PathVersioning
+GET /api/legacy/versions/v2
+
+###
+# group: Versioning / Legacy
+# @name ReqParamVersioning
+GET /api/legacy/versions?
+    version=2
+
+###
+# group: Versioning / Legacy
+# @name ReqHeadersVersioning
+GET /api/legacy/versions
+X-API-VERSION: 2
+
+###
+# group: Versioning / Legacy
+# @name MediaTypeVersioning
+GET /api/legacy/versions
+Accept: application/vnd.eazyapp.v1+json
+
+###
+# group: Versioning / Spring7
+# @name PathVersioning
+GET /api/versions/1.0
+
+###
+# group: Versioning / Spring7
+# @name ReqParamVersioning
+GET /api/versions?
+    version=2.0
+
+###
+# group: Versioning / Spring7
+# @name ReqHeadersVersioning
+GET /api/versions
+X-API-VERSION: 1.0
+
+###
+# group: Versioning / Spring7
+# @name MediaTypeVersioning
+GET /api/versions
+Accept: application/vnd.eazyapp+json;v=1.0
+
+###
+# group: Company
+# @name GetAllCompanies
+GET /api/companies
+Accept: application/vnd.eazyapp+json;v=1.0
+
+###
+# group: Contacts
+# @name SendContactMsg
+POST /api/contacts
+Accept: application/vnd.eazyapp+json;v=1.0
+Content-Type: application/json
+
+{
+  "name": "Madan",
+  "email": "tutor@eazybytes.com",
+  "userType": "Job Seeker",
+  "subject": "Facing technical problem",
+  "message": "Facing technical problem while uploading Resume"
+}
+
+###
+# group: WebScopes
+# @name RequestScope
+GET /api/scope/request
+Accept: application/vnd.eazyapp+json;v=1.0
+Content-Type: text/plain
+
+{
+    "name": "Madan",
+    "email": "tutor@eazybytes.com",
+    "userType": "Job Seeker",
+    "subject": "Facing technical problem",
+    "message": "Facing technical problem while uploading Resume"
+}
+
+###
+# group: WebScopes
+# @name SessionScope
+GET /api/scope/session
+Accept: application/vnd.eazyapp+json;v=1.0
+Content-Type: text/plain
+
+{
+    "name": "Madan",
+    "email": "tutor@eazybytes.com",
+    "userType": "Job Seeker",
+    "subject": "Facing technical problem",
+    "message": "Facing technical problem while uploading Resume"
+}
+
+###
+# group: WebScopes
+# @name ApplicationScope
+GET /api/scope/application
+Accept: application/vnd.eazyapp+json;v=1.0
+Content-Type: text/plain
+
+{
+    "name": "Madan",
+    "email": "tutor@eazybytes.com",
+    "userType": "Job Seeker",
+    "subject": "Facing technical problem",
+    "message": "Facing technical problem while uploading Resume"
+}
+
+###
+# group: WebScopes
+# @name TestScope
+GET /api/scope/test
+Accept: application/vnd.eazyapp+json;v=1.0
+Content-Type: text/plain
+
+{
+    "name": "Madan",
+    "email": "tutor@eazybytes.com",
+    "userType": "Job Seeker",
+    "subject": "Facing technical problem",
+    "message": "Facing technical problem while uploading Resume"
+}
+
+###
+# group: Security / Company
+# @name GetAllCompanies
+GET /api/companies
+Authorization: Basic madan Madan@123
+Accept: application/vnd.eazyapp+json;v=1.0
+
+###
+# group: Security / Company
+# @name GetAllCompanies_Public
+GET /api/companies/public
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IlRlc3QgVXNlciIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1NjIzIiwicm9sZXMiOiJST0xFX0pPQl9TRUVLRVIiLCJpYXQiOjE3NjU4ODMyODIsImV4cCI6MTc2NTk2OTY4Mn0.80veK24FLWqi0o-Kz3x3NKXPrzEnigF4ves2JesOYlE
+Accept: application/vnd.eazyapp+json;v=1.0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwidXNlcm5hbWUiOiJtYWRhbiIsInJvbGVzIjoiUk9MRV9VU0VSLEZBQ1RPUl9QQVNTV09SRCIsImlhdCI6MTc2NTM2NTU0MSwiZXhwIjoxNzY1NDUxOTQxfQ.cn2UxZY1ZDqmxPHpyoaFgR3EbY3klkIDDpiK97DPqpE
+
+###
+# group: Security / Contacts
+# @name SendContactMsg
+POST /api/contacts
+Authorization: Basic madan Madan@123
+Accept: application/vnd.eazyapp+json;v=1.0
+Content-Type: application/json
+
+{
+  "name": "Madan",
+  "email": "tutor@eazybytes.com",
+  "userType": "Job Seeker",
+  "subject": "Facing technical problem",
+  "message": "Facing technical problem while uploading Resume"
+}
+
+###
+# group: Security / Contacts
+# @name SendContactMsg_Public
+POST /api/contacts/public
+Accept: application/vnd.eazyapp+json;v=1.0
+X-XSRF-TOKEN: c2fd4c7e-a34a-45c1-8f86-b5177d305c59
+Content-Type: application/json
+
+{
+  "name": "1",
+  "email": "tutor@eazybytes.com",
+  "userType": "Job Seeker",
+  "subject": "Facing technical problem",
+  "message": "Facing technical problem while uploading Resume"
+}
+
+###
+# group: Security / Admin
+# @name GetNewContactMsgs
+GET /api/contacts/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1Njc0Iiwicm9sZXMiOiJST0xFX0FETUlOIiwiaWF0IjoxNzY2NDg3MjMxLCJleHAiOjE3NjY1NzM2MzF9.lVlEHH0YOZ5CoUhyh1mGEgY5g_p-dA5vv1Bf3zlEOWw
+X-XSRF-TOKEN: faa5a23f-c7af-4c72-97b7-51ef29208ed1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NjM5NjM3NSwiZXhwIjoxNzY2NDgyNzc1fQ.tSOwGUY0AP1FhyN7JsLqhgszAZeDtqXrBZlPpFTdfGU
+
+###
+# group: Security / Admin
+# @name GetNewContactMsgsWithSort
+GET /api/contacts/sort/admin?
+    sortBy=id&
+    sortDir=desc
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1Njc0Iiwicm9sZXMiOiJST0xFX0FETUlOIiwiaWF0IjoxNzY2NDk1MjUyLCJleHAiOjE3NjY1ODE2NTJ9.nkkubPbNEuTNLwUjMJ2Swq0oIsg85WAvYknD0826c5k
+X-XSRF-TOKEN: faa5a23f-c7af-4c72-97b7-51ef29208ed1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NjM5NjM3NSwiZXhwIjoxNzY2NDgyNzc1fQ.tSOwGUY0AP1FhyN7JsLqhgszAZeDtqXrBZlPpFTdfGU
+
+###
+# group: Security / Admin
+# @name GetNewContactMsgsWithPage
+GET /api/contacts/page/admin?
+    pageNumber=1&
+    pageSize=10&
+    sortBy=id&
+    sortDir=desc
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1Njc0Iiwicm9sZXMiOiJST0xFX0FETUlOIiwiaWF0IjoxNzY2NDk1MjUyLCJleHAiOjE3NjY1ODE2NTJ9.nkkubPbNEuTNLwUjMJ2Swq0oIsg85WAvYknD0826c5k
+X-XSRF-TOKEN: faa5a23f-c7af-4c72-97b7-51ef29208ed1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NjM5NjM3NSwiZXhwIjoxNzY2NDgyNzc1fQ.tSOwGUY0AP1FhyN7JsLqhgszAZeDtqXrBZlPpFTdfGU
+
+###
+# group: Security / Admin
+# @name UpdateContactMsgStatus
+PATCH /api/contacts/3/status/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1Njc0Iiwicm9sZXMiOiJST0xFX0FETUlOIiwiaWF0IjoxNzY2NDk1MjUyLCJleHAiOjE3NjY1ODE2NTJ9.nkkubPbNEuTNLwUjMJ2Swq0oIsg85WAvYknD0826c5k
+X-XSRF-TOKEN: faa5a23f-c7af-4c72-97b7-51ef29208ed1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NjM5NjM3NSwiZXhwIjoxNzY2NDgyNzc1fQ.tSOwGUY0AP1FhyN7JsLqhgszAZeDtqXrBZlPpFTdfGU
+
+###
+# group: Security / Admin
+# @name CreateCompany
+POST /api/companies/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1Njc0Iiwicm9sZXMiOiJST0xFX0FETUlOIiwiaWF0IjoxNzY3MDg5MzE0LCJleHAiOjE3NjcxNzU3MTR9.5E3v6L0Tc1NmcvckBRAgCkmYfY_4JtTeRL8-JQrcCrY
+X-XSRF-TOKEN: f482f2e0-64c3-48a8-ac0b-7d482686e10b
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NjM5NjM3NSwiZXhwIjoxNzY2NDgyNzc1fQ.tSOwGUY0AP1FhyN7JsLqhgszAZeDtqXrBZlPpFTdfGU
+Content-Type: application/json
+
+{
+  "name": "Eazy Bytes",
+  "logo": "/logos/apple.png",
+  "industry": "Technology",
+  "size": "Medium",
+  "rating": "5.0",
+  "locations": "Hyderabad",
+  "founded": "2013",
+  "description": "Ed-Tech Company",
+  "employees": "2343",
+  "website": "https://example.com"
+}
+
+###
+# group: Security / Admin
+# @name GetAllCompaniesForAdmin
+GET /api/companies/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1Njc0Iiwicm9sZXMiOiJST0xFX0FETUlOIiwiaWF0IjoxNzY3MzQ2NjM1LCJleHAiOjE3Njc0MzMwMzV9.AY0AsuP35GFd7ZtvihBR3JBRMDcnldWOHnGP1ACThTU
+X-XSRF-TOKEN: bd3e4896-87c6-4c6a-8f37-020bac927052
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NjM5NjM3NSwiZXhwIjoxNzY2NDgyNzc1fQ.tSOwGUY0AP1FhyN7JsLqhgszAZeDtqXrBZlPpFTdfGU
+
+###
+# group: Security / Admin
+# @name UpdateCompanyDetails
+PUT /api/companies/35/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1Njc0Iiwicm9sZXMiOiJST0xFX0FETUlOIiwiaWF0IjoxNzY2OTk5NjQ0LCJleHAiOjE3NjcwODYwNDR9.Q1VLFVFNtzrJJM2wx6dvJDDnISr4hLDdnKXXDfCe7cU
+X-XSRF-TOKEN: f482f2e0-64c3-48a8-ac0b-7d482686e10b
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NjM5NjM3NSwiZXhwIjoxNzY2NDgyNzc1fQ.tSOwGUY0AP1FhyN7JsLqhgszAZeDtqXrBZlPpFTdfGU
+Content-Type: application/json
+
+{
+  "name": "Eazy Bytes",
+  "logo": "/logos/apple.png",
+  "industry": "Technology",
+  "size": "Small",
+  "rating": "5.0",
+  "locations": "Hyderabad",
+  "founded": "2014",
+  "description": "Ed-Tech Company",
+  "employees": "5",
+  "website": "https://eazybytes.com"
+}
+
+###
+# group: Security / Admin
+# @name DeleteCompanyById
+DELETE /api/companies/36/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1Njc0Iiwicm9sZXMiOiJST0xFX0FETUlOIiwiaWF0IjoxNzY3MDg5MzE0LCJleHAiOjE3NjcxNzU3MTR9.5E3v6L0Tc1NmcvckBRAgCkmYfY_4JtTeRL8-JQrcCrY
+X-XSRF-TOKEN: f482f2e0-64c3-48a8-ac0b-7d482686e10b
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NjM5NjM3NSwiZXhwIjoxNzY2NDgyNzc1fQ.tSOwGUY0AP1FhyN7JsLqhgszAZeDtqXrBZlPpFTdfGU
+
+###
+# group: Security / Admin
+# @name SearchUserByEmail
+GET /api/users/search/admin?
+    email=testing@gmail.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1Njc0Iiwicm9sZXMiOiJST0xFX0FETUlOIiwiaWF0IjoxNzY2OTk5NjQ0LCJleHAiOjE3NjcwODYwNDR9.Q1VLFVFNtzrJJM2wx6dvJDDnISr4hLDdnKXXDfCe7cU
+X-XSRF-TOKEN: 7ed54bf9-6d36-4770-8be0-77ffe9bf3ca3
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NjM5NjM3NSwiZXhwIjoxNzY2NDgyNzc1fQ.tSOwGUY0AP1FhyN7JsLqhgszAZeDtqXrBZlPpFTdfGU
+
+###
+# group: Security / Admin
+# @name ElevateToEmployer
+PATCH /api/users/12/role/employer/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1Njc0Iiwicm9sZXMiOiJST0xFX0FETUlOIiwiaWF0IjoxNzY2OTk5NjQ0LCJleHAiOjE3NjcwODYwNDR9.Q1VLFVFNtzrJJM2wx6dvJDDnISr4hLDdnKXXDfCe7cU
+X-XSRF-TOKEN: 7ed54bf9-6d36-4770-8be0-77ffe9bf3ca3
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NjM5NjM3NSwiZXhwIjoxNzY2NDgyNzc1fQ.tSOwGUY0AP1FhyN7JsLqhgszAZeDtqXrBZlPpFTdfGU
+
+###
+# group: Security / Admin
+# @name AssignCompanyToEmployer
+PATCH /api/users/12/company/7/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1Njc0Iiwicm9sZXMiOiJST0xFX0FETUlOIiwiaWF0IjoxNzY2OTk5NjQ0LCJleHAiOjE3NjcwODYwNDR9.Q1VLFVFNtzrJJM2wx6dvJDDnISr4hLDdnKXXDfCe7cU
+X-XSRF-TOKEN: 7ed54bf9-6d36-4770-8be0-77ffe9bf3ca3
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NjM5NjM3NSwiZXhwIjoxNzY2NDgyNzc1fQ.tSOwGUY0AP1FhyN7JsLqhgszAZeDtqXrBZlPpFTdfGU
+
+###
+# group: Security / Employer
+# @name GetJobs
+GET /api/jobs/employer
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IlNhbmphbmEiLCJlbWFpbCI6InNhbmphbmFAZ21haWwuY29tIiwibW9iaWxlTnVtYmVyIjoiMjMzNDQ1NTY3NSIsInJvbGVzIjoiUk9MRV9FTVBMT1lFUiIsImlhdCI6MTc2NzM2MDE3OSwiZXhwIjoxNzY3NDQ2NTc5fQ.TzeTK7CFEYanQfXEcVAdMbCCxpsRV7GKiWyXVLoopfc
+Accept: application/vnd.eazyapp+json;v=1.0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwidXNlcm5hbWUiOiJtYWRhbiIsInJvbGVzIjoiUk9MRV9VU0VSLEZBQ1RPUl9QQVNTV09SRCIsImlhdCI6MTc2NTM2NTU0MSwiZXhwIjoxNzY1NDUxOTQxfQ.cn2UxZY1ZDqmxPHpyoaFgR3EbY3klkIDDpiK97DPqpE
+
+###
+# group: Security / Employer
+# @name CreateJob
+POST /api/jobs/employer
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IlNhbmphbmEiLCJlbWFpbCI6InNhbmphbmFAZ21haWwuY29tIiwibW9iaWxlTnVtYmVyIjoiMjMzNDQ1NTY3NSIsInJvbGVzIjoiUk9MRV9FTVBMT1lFUiIsImlhdCI6MTc2NzM2MDE3OSwiZXhwIjoxNzY3NDQ2NTc5fQ.TzeTK7CFEYanQfXEcVAdMbCCxpsRV7GKiWyXVLoopfc
+Accept: application/vnd.eazyapp+json;v=1.0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwidXNlcm5hbWUiOiJtYWRhbiIsInJvbGVzIjoiUk9MRV9VU0VSLEZBQ1RPUl9QQVNTV09SRCIsImlhdCI6MTc2NTM2NTU0MSwiZXhwIjoxNzY1NDUxOTQxfQ.cn2UxZY1ZDqmxPHpyoaFgR3EbY3klkIDDpiK97DPqpE
+X-XSRF-TOKEN: bd3e4896-87c6-4c6a-8f37-020bac927052
+Content-Type: application/json
+
+{
+  "title": "Application Director",
+  "location": "Remote",
+  "workType": "Remote",
+  "jobType": "Freelance",
+  "category": "Design",
+  "experienceLevel": "Entry Level",
+  "salaryMin": 42000.00,
+  "salaryMax": 99000.00,
+  "salaryCurrency": "USD",
+  "salaryPeriod": "year",
+  "description": "Join our design team as a Creative Director! You'll work on user-centered design solutions, conduct user research, and create beautiful interfaces that delight our customers.",
+  "requirements": "[\"Figma\", \"Illustrator\", \"After Effects\", \"Prototyping\", \"Design Systems\", \"User Research\", \"Wireframing\", \"Adobe XD\"]",
+  "benefits": "[\"Mental Health Support\", \"Life Insurance\", \"Remote Work\", \"Stock Options\", \"401(k)\"]",
+  "featured": false,
+  "urgent": false,
+  "remote": true
+}
+
+###
+# group: Security / Employer
+# @name UpdateJobStatus
+PATCH /api/jobs/1004/status/employer
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IlNhbmphbmEiLCJlbWFpbCI6InNhbmphbmFAZ21haWwuY29tIiwibW9iaWxlTnVtYmVyIjoiMjMzNDQ1NTY3NSIsInJvbGVzIjoiUk9MRV9FTVBMT1lFUiIsImlhdCI6MTc2NzM2MDE3OSwiZXhwIjoxNzY3NDQ2NTc5fQ.TzeTK7CFEYanQfXEcVAdMbCCxpsRV7GKiWyXVLoopfc
+Accept: application/vnd.eazyapp+json;v=1.0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwidXNlcm5hbWUiOiJtYWRhbiIsInJvbGVzIjoiUk9MRV9VU0VSLEZBQ1RPUl9QQVNTV09SRCIsImlhdCI6MTc2NTM2NTU0MSwiZXhwIjoxNzY1NDUxOTQxfQ.cn2UxZY1ZDqmxPHpyoaFgR3EbY3klkIDDpiK97DPqpE
+X-XSRF-TOKEN: bd3e4896-87c6-4c6a-8f37-020bac927052
+Content-Type: application/json
+
+{
+  "status": "ACTIVE"
+}
+
+###
+# group: Security / Employer
+# @name GetApplications
+GET /api/jobs/applications/143/employer
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJFYXp5IEpvYiBQb3J0YWwiLCJzdWIiOiJKb2IgUG9ydGFsIEpXVCBUb2tlbiIsIm5hbWUiOiJTYW5qYW5hIiwiZW1haWwiOiJzYW5qYW5hQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzUiLCJyb2xlcyI6IlJPTEVfRU1QTE9ZRVIiLCJpYXQiOjE3Njc4ODQ0NTIsImV4cCI6MTc2Nzk3MDg1Mn0.Uo4sGCjDICHPuzlUgOAstjvMfZLC3MJIZLAB_eur3vA
+Accept: application/vnd.eazyapp+json;v=1.0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwidXNlcm5hbWUiOiJtYWRhbiIsInJvbGVzIjoiUk9MRV9VU0VSLEZBQ1RPUl9QQVNTV09SRCIsImlhdCI6MTc2NTM2NTU0MSwiZXhwIjoxNzY1NDUxOTQxfQ.cn2UxZY1ZDqmxPHpyoaFgR3EbY3klkIDDpiK97DPqpE
+
+###
+# group: Security / Employer
+# @name UpdateApplication
+PATCH /api/jobs/applications/employer
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJFYXp5IEpvYiBQb3J0YWwiLCJzdWIiOiJKb2IgUG9ydGFsIEpXVCBUb2tlbiIsIm5hbWUiOiJTYW5qYW5hIiwiZW1haWwiOiJzYW5qYW5hQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjIzMzQ0NTU2NzUiLCJyb2xlcyI6IlJPTEVfRU1QTE9ZRVIiLCJpYXQiOjE3Njc4ODQ0NTIsImV4cCI6MTc2Nzk3MDg1Mn0.Uo4sGCjDICHPuzlUgOAstjvMfZLC3MJIZLAB_eur3vA
+Accept: application/vnd.eazyapp+json;v=1.0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwidXNlcm5hbWUiOiJtYWRhbiIsInJvbGVzIjoiUk9MRV9VU0VSLEZBQ1RPUl9QQVNTV09SRCIsImlhdCI6MTc2NTM2NTU0MSwiZXhwIjoxNzY1NDUxOTQxfQ.cn2UxZY1ZDqmxPHpyoaFgR3EbY3klkIDDpiK97DPqpE
+X-XSRF-TOKEN: e653d8c3-4976-474a-bfec-1381c8e09576
+Content-Type: application/json
+
+{
+  "applicationId": "9",
+  "status": "REJECTED",
+  "notes": "Not suitable"
+}
+
+###
+# group: Security / JobSeeker
+# @name SaveProfile
+PUT /api/users/profile/jobseeker
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IldpbGwgU21pdGgiLCJlbWFpbCI6InNtaXRoQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjEyMjM0MzU0NTYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NzM3MTIwNiwiZXhwIjoxNzY3NDU3NjA2fQ.Ihxdqwo3KGEZB7fj_xNCuHEVVMOQ1Ryi_vUMhvXWvX4
+Accept: application/vnd.eazyapp+json;v=1.0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwidXNlcm5hbWUiOiJtYWRhbiIsInJvbGVzIjoiUk9MRV9VU0VSLEZBQ1RPUl9QQVNTV09SRCIsImlhdCI6MTc2NTM2NTU0MSwiZXhwIjoxNzY1NDUxOTQxfQ.cn2UxZY1ZDqmxPHpyoaFgR3EbY3klkIDDpiK97DPqpE
+X-XSRF-TOKEN: bd3e4896-87c6-4c6a-8f37-020bac927052
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="profile"
+
+{"jobTitle":"Consultant","location":"Hyderabad","experienceLevel":"Entry Level","professionalBio":"Experienced Java developer","portfolioWebsite":null}
+--WebAppBoundary
+Content-Disposition: form-data; name="profilePicture"; filename="Madan Reddy.jpeg"
+
+< /Users/eazybytes/Desktop/Profile/Madan Reddy.jpeg
+--WebAppBoundary
+Content-Disposition: form-data; name="resume"; filename="MadanReddy_Resume.pdf"
+
+< /Users/eazybytes/Desktop/Profile/MadanReddy_Resume.pdf
+--WebAppBoundary
+
+###
+# group: Security / JobSeeker
+# @name GetProfile
+GET /api/users/profile/jobseeker
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IldpbGwgU21pdGgiLCJlbWFpbCI6InNtaXRoQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjEyMjM0MzU0NTYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NzM3MTIwNiwiZXhwIjoxNzY3NDU3NjA2fQ.Ihxdqwo3KGEZB7fj_xNCuHEVVMOQ1Ryi_vUMhvXWvX4
+Accept: application/vnd.eazyapp+json;v=1.0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwidXNlcm5hbWUiOiJtYWRhbiIsInJvbGVzIjoiUk9MRV9VU0VSLEZBQ1RPUl9QQVNTV09SRCIsImlhdCI6MTc2NTM2NTU0MSwiZXhwIjoxNzY1NDUxOTQxfQ.cn2UxZY1ZDqmxPHpyoaFgR3EbY3klkIDDpiK97DPqpE
+X-XSRF-TOKEN: bd3e4896-87c6-4c6a-8f37-020bac927052
+
+###
+# group: Security / JobSeeker
+# @name GetProfilePicture
+GET /api/users/profile/picture/jobseeker
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IldpbGwgU21pdGgiLCJlbWFpbCI6InNtaXRoQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjEyMjM0MzU0NTYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NzM3MTIwNiwiZXhwIjoxNzY3NDU3NjA2fQ.Ihxdqwo3KGEZB7fj_xNCuHEVVMOQ1Ryi_vUMhvXWvX4
+Accept: application/vnd.eazyapp+json;v=1.0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwidXNlcm5hbWUiOiJtYWRhbiIsInJvbGVzIjoiUk9MRV9VU0VSLEZBQ1RPUl9QQVNTV09SRCIsImlhdCI6MTc2NTM2NTU0MSwiZXhwIjoxNzY1NDUxOTQxfQ.cn2UxZY1ZDqmxPHpyoaFgR3EbY3klkIDDpiK97DPqpE
+X-XSRF-TOKEN: bd3e4896-87c6-4c6a-8f37-020bac927052
+
+###
+# group: Security / JobSeeker
+# @name GetResume
+GET /api/users/profile/resume/jobseeker
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IldpbGwgU21pdGgiLCJlbWFpbCI6InNtaXRoQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjEyMjM0MzU0NTYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NzM3MTIwNiwiZXhwIjoxNzY3NDU3NjA2fQ.Ihxdqwo3KGEZB7fj_xNCuHEVVMOQ1Ryi_vUMhvXWvX4
+Accept: application/vnd.eazyapp+json;v=1.0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwidXNlcm5hbWUiOiJtYWRhbiIsInJvbGVzIjoiUk9MRV9VU0VSLEZBQ1RPUl9QQVNTV09SRCIsImlhdCI6MTc2NTM2NTU0MSwiZXhwIjoxNzY1NDUxOTQxfQ.cn2UxZY1ZDqmxPHpyoaFgR3EbY3klkIDDpiK97DPqpE
+X-XSRF-TOKEN: bd3e4896-87c6-4c6a-8f37-020bac927052
+
+###
+# group: Security / JobSeeker
+# @name SaveJob
+POST /api/users/saved-jobs/912/jobseeker
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJFYXp5IEpvYiBQb3J0YWwiLCJzdWIiOiJKb2IgUG9ydGFsIEpXVCBUb2tlbiIsIm5hbWUiOiJKb2huIERvZSIsImVtYWlsIjoiam9obkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1NjkwIiwicm9sZXMiOiJST0xFX0pPQl9TRUVLRVIiLCJpYXQiOjE3NjkxODI4NzEsImV4cCI6MTc2OTE4NjQ3MX0.PoPZ0IxBUaM2vD1Qqz8wH7tKdSHgAyTqS567br3vCmI
+X-XSRF-TOKEN: 896ffda3-7caa-4746-84fd-15a403f1b9fa
+
+###
+# group: Security / JobSeeker
+# @name UnSaveJob
+DELETE /api/users/saved-jobs/912/jobseeker
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IldpbGwgU21pdGgiLCJlbWFpbCI6InNtaXRoQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjEyMjM0MzU0NTYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NzUxOTc2OCwiZXhwIjoxNzY3NjA2MTY4fQ.8ZPnX38j_sJvXsWIoAwGPY3XSVfyeFM4Xx7GiD8QcYc
+X-XSRF-TOKEN: 62c9905f-8015-4c3e-a9c8-a2906eed02d8
+
+###
+# group: Security / JobSeeker
+# @name GetSavedJobs
+GET /api/users/saved-jobs/jobseeker
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJFYXp5IEpvYiBQb3J0YWwiLCJzdWIiOiJKb2IgUG9ydGFsIEpXVCBUb2tlbiIsIm5hbWUiOiJKb2huIERvZSIsImVtYWlsIjoiam9obkBnbWFpbC5jb20iLCJtb2JpbGVOdW1iZXIiOiIyMzM0NDU1NjkwIiwicm9sZXMiOiJST0xFX0pPQl9TRUVLRVIiLCJpYXQiOjE3NjkxODI4NzEsImV4cCI6MTc2OTE4NjQ3MX0.PoPZ0IxBUaM2vD1Qqz8wH7tKdSHgAyTqS567br3vCmI
+X-XSRF-TOKEN: 62c9905f-8015-4c3e-a9c8-a2906eed02d8
+
+###
+# group: Security / JobSeeker
+# @name ApplyJob
+POST /api/users/job-applications/jobseeker
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IldpbGwgU21pdGgiLCJlbWFpbCI6InNtaXRoQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjEyMjM0MzU0NTYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NzUxOTc2OCwiZXhwIjoxNzY3NjA2MTY4fQ.8ZPnX38j_sJvXsWIoAwGPY3XSVfyeFM4Xx7GiD8QcYc
+X-XSRF-TOKEN: 62c9905f-8015-4c3e-a9c8-a2906eed02d8
+Content-Type: application/json
+
+{
+  "jobId": "918",
+  "coverLetter": "I specialize in building backend systems using Spring Boot and microservices, with growing expertise in AI-driven applications. I am excited to apply these skills to solve real-world problems at your company"
+}
+
+###
+# group: Security / JobSeeker
+# @name GetAppliedJobs
+GET /api/users/job-applications/jobseeker
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IldpbGwgU21pdGgiLCJlbWFpbCI6InNtaXRoQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjEyMjM0MzU0NTYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NzUxOTc2OCwiZXhwIjoxNzY3NjA2MTY4fQ.8ZPnX38j_sJvXsWIoAwGPY3XSVfyeFM4Xx7GiD8QcYc
+X-XSRF-TOKEN: 62c9905f-8015-4c3e-a9c8-a2906eed02d8
+
+###
+# group: Security / JobSeeker
+# @name WithDrawJob
+DELETE /api/users/job-applications/918/jobseeker
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb2IgUG9ydGFsIiwic3ViIjoiSldUIFRva2VuIiwibmFtZSI6IldpbGwgU21pdGgiLCJlbWFpbCI6InNtaXRoQGdtYWlsLmNvbSIsIm1vYmlsZU51bWJlciI6IjEyMjM0MzU0NTYiLCJyb2xlcyI6IlJPTEVfSk9CX1NFRUtFUiIsImlhdCI6MTc2NzUxOTc2OCwiZXhwIjoxNzY3NjA2MTY4fQ.8ZPnX38j_sJvXsWIoAwGPY3XSVfyeFM4Xx7GiD8QcYc
+X-XSRF-TOKEN: 62c9905f-8015-4c3e-a9c8-a2906eed02d8
+
+###
+# group: Security
+# @name Login
+POST /api/auth/login/public
+X-XSRF-TOKEN: 896ffda3-7caa-4746-84fd-15a403f1b9fa
+Content-Type: application/json
+
+{
+  "username": "john@gmail.com",
+  "password": "EazyBytes@1803"
+}
+
+###
+# group: Security
+# @name Register
+POST /api/auth/register/public
+X-XSRF-TOKEN: 896ffda3-7caa-4746-84fd-15a403f1b9fa
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@gmail.com",
+  "mobileNumber": "2334455690",
+  "password": "EazyBytes@1803"
+}
+
+###
+# group: Security
+# @name CSRFToken
+GET /api/csrf-token/public
+
+###
+# group: Security
+# @name TestLogging
+GET /api/logging/public
+
+###
+# group: Actuator
+# @name Actuator_ALL
+GET /jobportal/actuator
+
+###
+# group: Actuator
+# @name ShutDown
+POST /jobportal/actuator/shutdown
+
+###
+# group: Actuator
+# @name Cache_ALL
+GET /jobportal/actuator/caches
+
+###
+# group: Actuator
+# @name DELETE_Cache_ALL
+DELETE /jobportal/actuator/caches
+
+###
+# group: Actuator
+# @name DELETE_Cache
+DELETE /jobportal/actuator/caches/jobs
+
+###
+# group: Actuator
+# @name Set_LogLevel
+POST /jobportal/actuator/loggers/com.eazybytes.jobportal.aspects.LoggingAndPerformanceAspect
+Content-Type: application/json
+
+{
+  "configuredLevel": "ERROR"
+}
+
+###
+# group: Actuator
+# @name Clear_LogLevel
+POST /jobportal/actuator/loggers/com.eazybytes.jobportal.aspects.LoggingAndPerformanceAspect
+Content-Type: application/json
+
+{
+}
+
+###
+# group: Client / Posts
+# @name GetAllPosts
+GET /api/posts
+Accept: application/vnd.eazyapp+json;v=1.0
+
+###
+# group: Client / Posts
+# @name GetPost
+GET /api/posts/1
+Accept: application/vnd.eazyapp+json;v=1.0
+
+###
+# group: Client / Posts
+# @name CreatePost
+POST /api/posts
+Accept: application/vnd.eazyapp+json;v=1.0
+X-XSRF-TOKEN: 7e0acfbd-46af-4fdb-895a-9ac224d6e5d4
+Content-Type: application/json
+
+{
+  "userId": "2",
+  "title": "Testing",
+  "body": "Testing Body"
+}
+
+###
+# group: Client / Posts
+# @name UpdatePost
+PUT /api/posts/1
+Accept: application/vnd.eazyapp+json;v=1.0
+X-XSRF-TOKEN: 7e0acfbd-46af-4fdb-895a-9ac224d6e5d4
+Content-Type: application/json
+
+{
+  "userId": 2,
+  "id": 1,
+  "title": "Testing",
+  "body": "Testing Body"
+}
+
+###
+# group: Client / Posts
+# @name DeletePost
+DELETE /api/posts/1
+Accept: application/vnd.eazyapp+json;v=1.0
+X-XSRF-TOKEN: 7e0acfbd-46af-4fdb-895a-9ac224d6e5d4
+
+###
+# group: Client / ToDos
+# @name GetAllToDos
+GET /api/todos
+Accept: application/vnd.eazyapp+json;v=1.0
+
+###
+# group: Client / ToDos
+# @name GetToDO
+GET /api/todos/1
+Accept: application/vnd.eazyapp+json;v=1.0
+
+###
+# group: Client / ToDos
+# @name CreateToDO
+POST /api/todos
+Accept: application/vnd.eazyapp+json;v=1.0
+X-XSRF-TOKEN: 7e0acfbd-46af-4fdb-895a-9ac224d6e5d4
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "title": "delectus aut autem",
+  "completed": false
+}
+
+###
+# group: Client / ToDos
+# @name UpdateToDo
+PUT /api/todos/1
+Accept: application/vnd.eazyapp+json;v=1.0
+X-XSRF-TOKEN: c2fd4c7e-a34a-45c1-8f86-b5177d305c59
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "id": 1,
+  "title": "Testing",
+  "completed": true
+}
+
+###
+# group: Client / ToDos
+# @name DeleteToDo
+DELETE /api/todos/1
+Accept: application/vnd.eazyapp+json;v=1.0
+X-XSRF-TOKEN: c2fd4c7e-a34a-45c1-8f86-b5177d305c59

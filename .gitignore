@@ -28,6 +28,7 @@ build/
 # Maven
 log/
 target/
+.mvn/
 
 # Compiled class file
 *.class
