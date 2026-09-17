@@ -1,4 +1,4 @@
-package darkchoco.essential.company.controller;
+package darkchoco.essential.controller;
 
 import darkchoco.essential.dto.CompanyDto;
 import darkchoco.essential.service.ICompanyService;
